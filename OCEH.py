@@ -2,7 +2,6 @@
 
 #학생의 수업 입장을 도와주는 프로그램입니다.
 #자세한 내용은 readme.txt 참고
-#깃허브 링크 https://github.com/wyee1632/OCEH
 
 ############################################################ 모듈 import ############################################################ 
 
@@ -52,6 +51,17 @@ def CloseProgram():
     sleep(5)
     exit()
 
+#에러메시지
+def error():
+    print("예기치 못한 오류!")
+    print("프로그램 실행중 예기치 못한 오류가 발생하였습니다.")
+    print("실행 도중 입력값을 잘못 입력하였거나, 프로그램 자체의 문제가 있을수도 있습니다.")
+    print("프로그램을 다시 실행해 주십시오.")
+    print("이런 문제가 계속된다면 'wyee3546@gmail.com' 으로 문의해주시기 바랍니다")
+    print("이 창은 10초 후에 닫힙니다")
+    sleep(10)
+    exit()
+
 ############################################################ 사용 안내 ############################################################ 
 
 #프로그램 사용 확인
@@ -66,7 +76,7 @@ def Baduse():
         print("악의적 사용 방지 동의 | ", baduse)
         sleep(1)
         os.system('cls')
-        Myprogram()
+        errormsg()
     elif baduse == "n" or baduse == "N":
         print("악의적 사용 방지 동의 | ", baduse)
         sleep(1)
@@ -79,6 +89,27 @@ def Baduse():
         sleep(2)
         os.system('cls')
         Baduse()
+
+def errormsg():
+    print("만약 프로그램 실행 도중 '예기치 못한 오류!' 화면이 나오거나")
+    print("프로그램이 아무 이유 없이 종료되는 현상이 발생하면, 프로그램을 다시 실행하여 주시기 바랍니다.")
+    print("만약 이 현상이 자주 발생한다면 'wyee3546@gmail.com'으로 문의해주시기 바랍나다.")
+    errormsgok = input(">")
+    if errormsgok == "y" or errormsgok == "Y":
+        sleep(1)
+        os.system('cls')
+        Myprogram()
+    elif baduse == "n" or baduse == "N":
+        sleep(1)
+        print("위 메시지를 읽어주시기 바랍니다.")
+        sleep(3)
+        os.system('cls')
+        errormsg()
+    else:
+        print("y 또는 n 으로 대답해주십시오.")
+        sleep(2)
+        os.system('cls')
+        errormsg()
 
 #사용규약 확인
 def Myprogram():
@@ -239,7 +270,6 @@ def ClassSetInfo():
     print("----------------------------------------------------------")
     print("이 다음 과정에 나올 수업 설정의 예시를 설명합니다.")
     print("만약 잘못된 정보를 입력하실 경우에 프로그램이 오작동할 수 있습니다.")
-    print("1교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
     print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
     print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
     print("예시 : 수학 1 www.~~~~.com")
@@ -259,7 +289,7 @@ def ClassSetInfo():
         os.system('cls')
         ClassSetInfo()
 
-############################################################ 변수 사용,정의 밑 수업 정보 받기 ############################################################ 
+############################################################ 교시수 설정 ############################################################ 
 
 #수업설정
 def ClassSet():
@@ -278,114 +308,226 @@ def ClassSet():
         fullclass = "12"
     elif classcount == "1":
         fullclass = "1"
-    global a1, a2, a3, a4, a5, a6, a7
-    global b1, b2, b3, b4, b5, b6, b7
-    global c1, c2, c3, c4, c5, c6, c7
-    global cls1, cls2, cls3, cls4, cls5, cls6, cls7
-    def ClassOne():
-        if "1" in fullclass:
-            try:
-                cls1 = 1
-                print("-----------------------------------------------")
-                print("1교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
-                print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
-                print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
-                print("예시 : 수학 1 www.~~~~.com")
-                print("-----------------------------------------------")
-                a1, b1, c1 = input('정보를 입력하세요. : ').split()
-                os.system('cls')
-            except ValueError:
-                print("잘못된 값이 입력되었습니다. 다시 입력해주세요.")
-                sleep(3)
-                ClassOne()
-        else:
-            cls1 = 2
+    ClassOP1()
+
+############################################################ 수업 정보 받기 ############################################################ 
+
+#1교시
+def ClassOP1():
+    global cls1, a1, b1, c1
+    if "1" in fullclass:
+        if classcount2 >= 1:
+            ClassOP2()
+        try:
+            cls1 = 1
+            print("-----------------------------------------------")
+            print("1교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
+            print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
+            print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
+            print("예시 : 수학 1 www.~~~~.com")
+            print("-----------------------------------------------")
+            a1, b1, c1 = input('정보를 입력하세요. : ').split()
             os.system('cls')
-            setting()
-    def ClassTwo():
-        if "2" in fullclass:
-            try:
-                cls2 = 1
-                print("-----------------------------------------------")
-                print("2교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
-                print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
-                print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
-                print("예시 : 수학 1 www.~~~~.com")
-                print("-----------------------------------------------")
-                a2, b2, c2 = input('정보를 입력하세요. : ').split()
+            if b1 != 1 and b1 != 2 and b1 != 3:
+                print("실시간 수업 여부는 정확히 입력해 주셔야 합니다. 다시 입력해 주세요.")
+                sleep(2)
                 os.system('cls')
-            except ValueError:
-                print("잘못된 값이 입력되었습니다. 다시 입력해주세요")
-        else:
-            cls2 = 2
+                ClassOP1()
+            ClassOP2()
+        except ValueError:
+            print("잘못된 값이 입력되었습니다. 다시 입력해주세요")
+            sleep(2)
             os.system('cls')
-            setting()
-    if "3" in fullclass:
-        cls3 = 1
-        print("-----------------------------------------------")
-        print("3교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
-        print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
-        print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
-        print("예시 : 수학 1 www.~~~~.com")
-        print("-----------------------------------------------")
-        a3, b3, c3 = input('정보를 입력하세요. : ').split()
+            ClassOP1()
+    else:
+        cls1 = 2
         os.system('cls')
+        setting()
+
+#2교시
+def ClassOP2():
+    global cls2, a2, b2, c2
+    if "2" in fullclass:
+        if classcount2 >= 2:
+            ClassOP3()
+        try:
+            cls2 = 1
+            print("-----------------------------------------------")
+            print("2교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
+            print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
+            print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
+            print("예시 : 수학 1 www.~~~~.com")
+            print("-----------------------------------------------")
+            a2, b2, c2 = input('정보를 입력하세요. : ').split()
+            os.system('cls')
+            if b2 != 1 and b2 != 2 and b2 != 3:
+                print("실시간 수업 여부는 정확히 입력해 주셔야 합니다. 다시 입력해 주세요.")
+                sleep(2)
+                os.system('cls')
+                ClassOP2()
+            ClassOP3()
+        except ValueError:
+            print("잘못된 값이 입력되었습니다. 다시 입력해주세요")
+            sleep(2)
+            os.system('cls')
+            ClassOP2()
+    else:
+        cls2 = 2
+        os.system('cls')
+        setting()
+
+#3교시
+def ClassOP3():
+    global cls3, a3, b3, c3
+    if "3" in fullclass:
+        if classcount2 >= 3:
+            ClassOP4()
+        try:
+            cls3 = 1
+            print("-----------------------------------------------")
+            print("3교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
+            print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
+            print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
+            print("예시 : 수학 1 www.~~~~.com")
+            print("-----------------------------------------------")
+            a3, b3, c3 = input('정보를 입력하세요. : ').split()
+            os.system('cls')
+            if b3 != 1 and b3 != 2 and b3 != 3:
+                print("실시간 수업 여부는 정확히 입력해 주셔야 합니다. 다시 입력해 주세요.")
+                sleep(2)
+                os.system('cls')
+                ClassOP3()
+            ClassOP4()
+        except ValueError:
+            print("잘못된 값이 입력되었습니다. 다시 입력해주세요")
+            sleep(2)
+            os.system('cls')
+            ClassOP3()
     else:
         cls3 = 2
         os.system('cls')
         setting()
+
+#4교시
+def ClassOP4():
     if "4" in fullclass:
-        cls4 = 1
-        print("-----------------------------------------------")
-        print("4교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
-        print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
-        print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
-        print("예시 : 수학 1 www.~~~~.com")
-        print("-----------------------------------------------")
-        a4, b4, c4 = input('정보를 입력하세요. : ').split()
-        os.system('cls')
+        if classcount2 >= 4:
+            ClassOP5()
+        global cls4, a4, b4, c4
+        try:
+            cls4 = 1
+            print("-----------------------------------------------")
+            print("4교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
+            print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
+            print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
+            print("예시 : 수학 1 www.~~~~.com")
+            print("-----------------------------------------------")
+            a4, b4, c4 = input('정보를 입력하세요. : ').split()
+            os.system('cls')
+            if b4 != 1 and b4 != 2 and b4 != 3:
+                print("실시간 수업 여부는 정확히 입력해주셔야 합니다. 다시 입력해 주세요.")
+                sleep(2)
+                os.system('cls')
+                ClassOP4()
+            ClassOP5()
+        except ValueError:
+            print("잘못된 값이 입력되었습니다 다시 입력해주세요.")
+            sleep(2)
+            os.system('cls')
+            ClassOP4()
     else:
         cls4 = 2
         os.system('cls')
         setting()
+
+#5교시
+def ClassOP5():
+    global cls5, a5, b5, c5
     if "5" in fullclass:
-        cls5 = 1
-        print("-----------------------------------------------")
-        print("5교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
-        print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
-        print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
-        print("예시 : 수학 1 www.~~~~.com")
-        print("-----------------------------------------------")
-        a5, b5, c5 = input('정보를 입력하세요. : ').split()
-        os.system('cls')
+        if classcount2 >= 5:
+            ClassOP6()
+        try:
+            cls5 = 1
+            print("-----------------------------------------------")
+            print("5교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
+            print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
+            print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
+            print("예시 : 수학 1 www.~~~~.com")
+            print("-----------------------------------------------")
+            a5, b5, c5 = input('정보를 입력하세요. : ').split()
+            os.system('cls')
+            if b5 != 1 and b5 != 2 and b5 != 3:
+                print("실시간 수업 여부는 정확히 입력해주셔야 합니다. 다시 입력해 주세요.")
+                sleep(2)
+                os.system('cls')
+                ClassOP5()
+            ClassOP6()
+        except ValueError:
+            print("잘못된 값이 입력되었습니다 다시 입력해주세요.")
+            sleep(2)
+            os.system('cls')
+            ClassOP5()
     else:
         cls5 = 2
         os.system('cls')
         setting()
+
+#6교시
+def ClassOP6():
+    global cls6, a6, b6, c6
     if "6" in fullclass:
-        cls6 = 1
-        print("-----------------------------------------------")
-        print("6교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
-        print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
-        print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
-        print("예시 : 수학 1 www.~~~~.com")
-        print("-----------------------------------------------")
-        a6, b6, c6 = input('정보를 입력하세요. : ').split()
-        os.system('cls')
+        if classcount2 >= 6:
+            ClassOP7()
+        try:
+            cls6 = 1
+            print("-----------------------------------------------")
+            print("6교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
+            print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
+            print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
+            print("예시 : 수학 1 www.~~~~.com")
+            print("-----------------------------------------------")
+            a6, b6, c6 = input('정보를 입력하세요. : ').split()
+            os.system('cls')
+            if b6 != 1 and b6 != 2 and b6 != 3:
+                print("실시간 수업 여부는 정확히 입력해주셔야 합니다. 다시 입력해 주세요.")
+                sleep(2)
+                os.system('cls')
+                ClassOP6()
+            ClassOP7()
+        except ValueError:
+            print("잘못된 값이 입력되었습니다 다시 입력해주세요.")
+            sleep(2)
+            os.system('cls')
+            ClassOP6()
     else:
         cls6 = 2
         os.system('cls')
         setting()
+
+#7교시
+def ClassOP7():
+    global cls7, a7, b7, c7
     if "7" in fullclass:
-        cls7 = 1
-        print("-----------------------------------------------")
-        print("7교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
-        print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
-        print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
-        print("예시 : 수학 1 www.~~~~.com")
-        print("-----------------------------------------------")
-        a7, b7, c7 = input('정보를 입력하세요. : ').split()
-        os.system('cls')
+        try:
+            cls7 = 1
+            print("-----------------------------------------------")
+            print("7교시 수업의 정보를 아래 형식에 맞추어 입력해주시기 바랍니다.")
+            print("수업명 실시간여부 수업주소(실시간이 없으면 x)")
+            print("실시간 여부 | 1 : 실시간 , 2 : 컨텐츠 , 3 : 미정")
+            print("예시 : 수학 1 www.~~~~.com")
+            print("-----------------------------------------------")
+            a7, b7, c7 = input('정보를 입력하세요. : ').split()
+            os.system('cls')
+            if b7 != 1 and b7 != 2 and b7 != 3:
+                print("실시간 수업 여부는 정확히 입력해주셔야 합니다. 다시 입력해 주세요.")
+                sleep(2)
+                os.system('cls')
+                ClassOP6()
+        except ValueError:
+            print("잘못된 값이 입력되었습니다 다시 입력해주세요.")
+            sleep(2)
+            os.system('cls')
+            ClassOP6()
         setting()
     else:
         cls7 = 2
@@ -411,7 +553,7 @@ def class1():
             print("1교시 " , a1 , "수업시간까지 대기중입니다.")
             print("수업시간이 되면 자동으로 이동합니다.")
             print("-----------------")
-            schedule.every().day.at("17:45").do(CS1)
+            schedule.every().day.at("09:15").do(CS1)
     elif cls1 == 2:
         print("---------------------------")
         print(datetime.today() + " 의 수업이 종료되었습니다 ")
@@ -419,6 +561,8 @@ def class1():
         print("---------------------------")
         sleep(30)
         os.system('cls')
+    else:
+        error()
 
 #2교시 수업 시간 감지
 def class2():
@@ -438,6 +582,8 @@ def class2():
         print("---------------------------")
         sleep(30)
         os.system('cls')
+    else:
+        error()
 
 #3교시 수업 시간 감지
 def class3():
@@ -457,6 +603,8 @@ def class3():
         print("---------------------------")
         sleep(30)
         os.system('cls')
+    else:
+        error()
 
 #4교시 수업 시간 감지
 def class4():
@@ -476,6 +624,8 @@ def class4():
         print("---------------------------")
         sleep(30)
         os.system('cls')
+    else:
+        error()
 
 #5교시 수업 시간 감지
 def class5():
@@ -503,6 +653,8 @@ def class5():
         print(datetime.today() + " 의 수업이 종료되었습니다 ")
         print("프로그램이 30초 후 자동으로 종료됩니다.")
         print("---------------------------")
+    else:
+        error()
 
 #6교시 수업 시간 감지
 def class6():
@@ -515,7 +667,7 @@ def class6():
                 print("6교시 " , a6 , "수업시간까지 대기중입니다.")
                 print("수업시간이 되면 자동으로 이동합니다.")
                 print("-----------------")
-            schedule.every().day.at("14:35").do(CS6)
+                schedule.every().day.at("14:35").do(CS6)
         else:
             if classcount2 >= 1:
                 class2()
@@ -524,12 +676,14 @@ def class6():
                 print("6교시 " , a6 , "수업시간까지 대기중입니다.")
                 print("수업시간이 되면 자동으로 이동합니다.")
                 print("-----------------")
-            schedule.every().day.at("14:30").do(CS6)
+                schedule.every().day.at("14:30").do(CS6)
     elif cls6 == 2:
         print("---------------------------")
         print(datetime.today() + " 의 수업이 종료되었습니다 ")
         print("프로그램이 30초 후 자동으로 종료됩니다.")
         print("---------------------------")
+    else:
+        error()
 
 #7교시 수업 시간 감지
 def class7():
@@ -542,7 +696,7 @@ def class7():
                 print("7교시 " , a7 , "수업시간까지 대기중입니다.")
                 print("수업시간이 되면 자동으로 이동합니다.")
                 print("-----------------")
-            schedule.every().day.at("15:30").do(CS7)
+                schedule.every().day.at("15:30").do(CS7)
         else:
             if classcount2 >= 1:
                 class2()
@@ -551,12 +705,14 @@ def class7():
                 print("7교시 " , a7 , "수업시간까지 대기중입니다.")
                 print("수업시간이 되면 자동으로 이동합니다.")
                 print("-----------------")
-            schedule.every().day.at("15:25").do(CS7)
+                schedule.every().day.at("15:25").do(CS7)
     elif cls7 == 2:
         print("---------------------------")
         print(datetime.today() + " 의 수업이 종료되었습니다 ")
         print("프로그램이 30초 후 자동으로 종료됩니다.")
         print("---------------------------")
+    else:
+        error()
 
 ############################################################ 수업 실행 ############################################################ 
 
@@ -572,15 +728,21 @@ def CS1():
             msg = ctypes.windll.user32.MessageBoxW(None, "1교시 컨텐츠", "1교시 수업은 컨텐츠 수업입니다.", 0)
             sleep(5)
             class2()
-        else:
+        elif msgbox == 2 or msgbox == 4:
             class2()
+        else:
+            error()
     elif b1 == 3:
         if msgbox == 1 or msgbox == 2:
             msg = ctypes.windll.user32.MessageBoxW(None, "1교시 미정", "1교시 수업은 미정입니다. 클래스에 들어가 직접 확인해주세요.", 0)
             sleep(5)
             class2()
-        else:
+        elif msgbox == 2 or msgbox == 4:
             class2()
+        else:
+            error()
+    else:
+        error()
 
 #2교시 수업 실행
 def CS2():
@@ -594,15 +756,21 @@ def CS2():
             msg = ctypes.windll.user32.MessageBoxW(None, "2교시 컨텐츠", "2교시 수업은 컨텐츠 수업입니다.", 0)
             sleep(5)
             class3()
-        else:
+        elif msgbox == 2 or msgbox == 4:
             class3()
+        else:
+            error()
     elif b2 == 3:
         if msgbox == 1 or msgbox == 2:
             msg = ctypes.windll.user32.MessageBoxW(None, "2교시 미정", "2교시 수업은 미정입니다. 클래스에 들어가 직접 확인해주세요.", 0)
             sleep(5)
             class3()
-        else:
+        elif msgbox == 2 or msgbox == 4:
             class3()
+        else:
+            error()
+    else:
+        error()
 
 #3교시 수업 실행
 def CS3():
@@ -616,15 +784,21 @@ def CS3():
             msg = ctypes.windll.user32.MessageBoxW(None, "3교시 컨텐츠", "3교시 수업은 컨텐츠 수업입니다.", 0)
             sleep(5)
             class4()
-        else:
+        elif msgbox == 2 or msgbox == 4:
             class4()
+        else:
+            error()
     elif b3 == 3:
         if msgbox == 1 or msgbox == 2:
             msg = ctypes.windll.user32.MessageBoxW(None, "3교시 미정", "3교시 수업은 미정입니다. 클래스에 들어가 직접 확인해주세요.", 0)
             sleep(5)
             class4()
-        else:
+        elif msgbox == 2 or msgbox == 4:
             class4()
+        else:
+            error()
+    else:
+        error()
 
 #4교시 수업 실행
 def CS4():
@@ -638,15 +812,21 @@ def CS4():
             msg = ctypes.windll.user32.MessageBoxW(None, "4교시 컨텐츠", "4교시 수업은 컨텐츠 수업입니다.", 0)
             sleep(5)
             class5()
-        else:
+        elif msgbox == 2 or msgbox == 4:
             class5()
+        else:
+            error()
     elif b4 == 3:
         if msgbox == 1 or msgbox == 2:
             msg = ctypes.windll.user32.MessageBoxW(None, "4교시 컨텐츠", "4교시 수업은 미정입니다. 클래스에 들어가 직접 확인해주세요", 0)
             sleep(5)
             class5()
-        else:
+        elif msgbox == 2 or msgbox == 4:
             class5()
+        else:
+            error()
+    else:
+        error()
 
 #5교시 수업 실행
 def CS5():
@@ -660,15 +840,21 @@ def CS5():
             msg = ctypes.windll.user32.MessageBoxW(None, "5교시 컨텐츠", "5교시 수업은 컨텐츠 수업입니다.", 0)
             sleep(5)
             class6()
-        else:
+        elif msgbox == 2 or msgbox == 4:
             class6()
+        else:
+            error()
     elif b5 == 3:
         if msgbox == 1 or msgbox == 2:
             msg = ctypes.windll.user32.MessageBoxW(None, "5교시 미정", "5교시 수업은 미정입니다. 클래스에 들어가 직접 확인해주세요.", 0)
             sleep(5)
             class6()
-        else:
+        elif msgbox == 2 or msgbox == 4:
             class6()
+        else:
+            error()
+    else:
+        error()
 
 #6교시 수업 실행
 def CS6():
@@ -682,15 +868,21 @@ def CS6():
             msg = ctypes.windll.user32.MessageBoxW(None, "6교시 컨텐츠", "6교시 수업은 컨텐츠 수업입니다.", 0)
             sleep(5)
             class7()
-        else:
+        elif  msgbox == 2 or msgbox == 4:
             class7()
+        else:
+            error()
     elif b6 == 3:
         if msgbox == 1 or msgbox == 2:
             msg = ctypes.windll.user32.MessageBoxW(None, "6교시 미정", "6교시 수업은 미정입니다. 클래스에 들어가 직접 확인해주세요.", 0)
             sleep(5)
             class7()
-        else:
+        elif msgbox == 2 or msgbox == 4:
             class7()
+        else:
+            error()
+    else:
+        error()
 
 #7교시 수업 실행
 def CS7():
@@ -701,18 +893,24 @@ def CS7():
         CloseProgram()
     elif b7 == 2:
         if msgbox == 1 or msgbox == 3:
-            msg = ctypes.windll.user32.MessageBoxW(None, "내용", "제목", 0)
+            msg = ctypes.windll.user32.MessageBoxW(None, "7교시 컨텐츠", "7교시 수업은 컨텐츠 수업입니다.", 0)
             sleep(5)
             CloseProgram()
-        else:
+        elif msgbox == 2 or msgbox == 4:
             CloseProgram()
+        else:
+            error()
     elif b7 == 3:
         if msgbox == 1 or msgbox == 2:
-            msg = ctypes.windll.user32.MessageBoxW(None, "내용", "제목", 0)
+            msg = ctypes.windll.user32.MessageBoxW(None, "7교시 미정", "7교시 수업은 미정입니다. 클래스에 들어가 직접 확인해주세요.", 0)
             sleep(5)
             CloseProgram()
-        else:
+        elif msgbox == 2 or msgbox == 4:
             CloseProgram()
+        else:
+            error()
+    else:
+        error()
 
 ############################################################ 기타 ############################################################ 
 
@@ -721,4 +919,4 @@ ProgramStart() #시작
 #스케쥴 1초마다 확인
 while True:
     schedule.run_pending()
-    time.sleep(1)
+    time.sleep(1) 
