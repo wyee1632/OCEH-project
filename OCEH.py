@@ -342,7 +342,7 @@ def ClassOP1():
     else:
         cls1 = 2
         os.system('cls')
-        setting()
+        CloseProgram()
 
 #2교시
 def ClassOP2():
