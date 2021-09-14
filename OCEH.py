@@ -328,11 +328,11 @@ def ClassOP1():
             print("-----------------------------------------------")
             a1, b1, c1 = input('정보를 입력하세요. : ').split()
             os.system('cls')
-            if b1 != 1 and b1 != 2 and b1 != 3:
-                print("실시간 수업 여부는 정확히 입력해 주셔야 합니다. 다시 입력해 주세요.")
-                sleep(2)
-                os.system('cls')
-                ClassOP1()
+            # if b1 != 1 and b1 != 2 and b1 != 3:
+            #     print("실시간 수업 여부는 정확히 입력해 주셔야 합니다. 다시 입력해 주세요.")
+            #     sleep(2)
+            #     os.system('cls')
+            #     ClassOP1()
             ClassOP2()
         except ValueError:
             print("잘못된 값이 입력되었습니다. 다시 입력해주세요")
@@ -360,11 +360,11 @@ def ClassOP2():
             print("-----------------------------------------------")
             a2, b2, c2 = input('정보를 입력하세요. : ').split()
             os.system('cls')
-            if b2 != 1 and b2 != 2 and b2 != 3:
-                print("실시간 수업 여부는 정확히 입력해 주셔야 합니다. 다시 입력해 주세요.")
-                sleep(2)
-                os.system('cls')
-                ClassOP2()
+            # if b2 != 1 and b2 != 2 and b2 != 3:
+            #     print("실시간 수업 여부는 정확히 입력해 주셔야 합니다. 다시 입력해 주세요.")
+            #     sleep(2)
+            #     os.system('cls')
+            #     ClassOP2()
             ClassOP3()
         except ValueError:
             print("잘못된 값이 입력되었습니다. 다시 입력해주세요")
@@ -392,11 +392,11 @@ def ClassOP3():
             print("-----------------------------------------------")
             a3, b3, c3 = input('정보를 입력하세요. : ').split()
             os.system('cls')
-            if b3 != 1 and b3 != 2 and b3 != 3:
-                print("실시간 수업 여부는 정확히 입력해 주셔야 합니다. 다시 입력해 주세요.")
-                sleep(2)
-                os.system('cls')
-                ClassOP3()
+            # if b3 != 1 and b3 != 2 and b3 != 3:
+            #     print("실시간 수업 여부는 정확히 입력해 주셔야 합니다. 다시 입력해 주세요.")
+            #     sleep(2)
+            #     os.system('cls')
+            #     ClassOP3()
             ClassOP4()
         except ValueError:
             print("잘못된 값이 입력되었습니다. 다시 입력해주세요")
@@ -424,11 +424,11 @@ def ClassOP4():
             print("-----------------------------------------------")
             a4, b4, c4 = input('정보를 입력하세요. : ').split()
             os.system('cls')
-            if b4 != 1 and b4 != 2 and b4 != 3:
-                print("실시간 수업 여부는 정확히 입력해주셔야 합니다. 다시 입력해 주세요.")
-                sleep(2)
-                os.system('cls')
-                ClassOP4()
+            # if b4 != 1 and b4 != 2 and b4 != 3:
+            #     print("실시간 수업 여부는 정확히 입력해주셔야 합니다. 다시 입력해 주세요.")
+            #     sleep(2)
+            #     os.system('cls')
+            #     ClassOP4()
             ClassOP5()
         except ValueError:
             print("잘못된 값이 입력되었습니다 다시 입력해주세요.")
@@ -456,11 +456,11 @@ def ClassOP5():
             print("-----------------------------------------------")
             a5, b5, c5 = input('정보를 입력하세요. : ').split()
             os.system('cls')
-            if b5 != 1 and b5 != 2 and b5 != 3:
-                print("실시간 수업 여부는 정확히 입력해주셔야 합니다. 다시 입력해 주세요.")
-                sleep(2)
-                os.system('cls')
-                ClassOP5()
+            # if b5 != 1 and b5 != 2 and b5 != 3:
+            #     print("실시간 수업 여부는 정확히 입력해주셔야 합니다. 다시 입력해 주세요.")
+            #     sleep(2)
+            #     os.system('cls')
+            #     ClassOP5()
             ClassOP6()
         except ValueError:
             print("잘못된 값이 입력되었습니다 다시 입력해주세요.")
@@ -488,11 +488,11 @@ def ClassOP6():
             print("-----------------------------------------------")
             a6, b6, c6 = input('정보를 입력하세요. : ').split()
             os.system('cls')
-            if b6 != 1 and b6 != 2 and b6 != 3:
-                print("실시간 수업 여부는 정확히 입력해주셔야 합니다. 다시 입력해 주세요.")
-                sleep(2)
-                os.system('cls')
-                ClassOP6()
+            # if b6 != 1 and b6 != 2 and b6 != 3:
+            #     print("실시간 수업 여부는 정확히 입력해주셔야 합니다. 다시 입력해 주세요.")
+            #     sleep(2)
+            #     os.system('cls')
+            #     ClassOP6()
             ClassOP7()
         except ValueError:
             print("잘못된 값이 입력되었습니다 다시 입력해주세요.")
@@ -518,11 +518,12 @@ def ClassOP7():
             print("-----------------------------------------------")
             a7, b7, c7 = input('정보를 입력하세요. : ').split()
             os.system('cls')
-            if b7 != 1 and b7 != 2 and b7 != 3:
-                print("실시간 수업 여부는 정확히 입력해주셔야 합니다. 다시 입력해 주세요.")
-                sleep(2)
-                os.system('cls')
-                ClassOP6()
+            # if b7 != 1 and b7 != 2 and b7 != 3:
+            #     print("실시간 수업 여부는 정확히 입력해주셔야 합니다. 다시 입력해 주세요.")
+            #     sleep(2)
+            #     os.system('cls')
+            # ClassOP6()
+            setting()
         except ValueError:
             print("잘못된 값이 입력되었습니다 다시 입력해주세요.")
             sleep(2)
